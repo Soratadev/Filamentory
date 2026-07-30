@@ -28,13 +28,16 @@ struct DetailsFilamentView: View {
                 } label: {
                     Text("Color")
                 }
+                LabeledContent("Weight", value: "\(filament.weight) g")
+                LabeledContent("Price", value: String(format: "%.2f€", filament.price))
             }
             
             Section("Storage") {
                 LabeledContent("Stock", value: "\(filament.amount)")
-                LabeledContent("Price", value: String(format: "%.2f€", filament.price))
+                
                 LabeledContent("Remaining weight", value: "\(filament.remaining) g")
                 LabeledContent("Status", value: "\(filament.status.localizedName)")
+                LabeledContent("Added at", value: filament.createdAt.formatted(.dateTime.day().month().year()))
             }
         }
         .navigationTitle(filament.type)
