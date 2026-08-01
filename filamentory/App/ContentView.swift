@@ -9,6 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @AppStorage("hasSeenWelcome") private var hasSeenWelcome: Bool = false
+    @State private var showWelcome: Bool = false
+    
     var body: some View {
         TabView {
             StorageView()
@@ -27,6 +30,14 @@ struct ContentView: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
+        }
+        .fullScreenCover(isPresented: $showWelcome) {
+            WelcomeView()
+        }
+        .onAppear {
+            if !hasSeenWelcome {
+                showWelcome = true
+            }
         }
     }
 }
