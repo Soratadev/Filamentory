@@ -23,3 +23,9 @@ enum AppLanguage: String, CaseIterable, Identifiable {
         }
     }
 }
+
+extension AppLanguage {
+    static var systemDefault: AppLanguage {
+        Locale.current.language.languageCode?.identifier == "es" ? .spanish : .english
+    }
+}

@@ -6,14 +6,44 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		A6C300E9301E358600241E07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A615C4C930013E900021C49F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A615C4D030013E900021C49F;
+			remoteInfo = filamentory;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		A615C4D130013E900021C49F /* filamentory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = filamentory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6BF76C9301D308A00DF5EED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = filamentory/Info.plist; sourceTree = "<group>"; };
+		A6C30096301E349200241E07 /* filamentory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = filamentory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6C300E5301E358600241E07 /* filamentoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = filamentoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A6BF76CC301D351D00DF5EED /* Exceptions for "filamentory" folder in "filamentory" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A615C4D030013E900021C49F /* filamentory */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A615C4D330013E900021C49F /* filamentory */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A6BF76CC301D351D00DF5EED /* Exceptions for "filamentory" folder in "filamentory" target */,
+			);
 			path = filamentory;
+			sourceTree = "<group>";
+		};
+		A6C300E6301E358600241E07 /* filamentoryTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = filamentoryTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,23 +56,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A6C300E2301E358600241E07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		A615C4C830013E900021C49F = {
 			isa = PBXGroup;
 			children = (
+				A6BF76C9301D308A00DF5EED /* Info.plist */,
 				A615C4D330013E900021C49F /* filamentory */,
-				A615C4D230013E900021C49F /* Products */,
+				A6C30096301E349200241E07 /* filamentory.app */,
+				A6C300E5301E358600241E07 /* filamentoryTests.xctest */,
+				A6C300E6301E358600241E07 /* filamentoryTests */,
 			);
-			sourceTree = "<group>";
-		};
-		A615C4D230013E900021C49F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A615C4D130013E900021C49F /* filamentory.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -67,8 +99,31 @@
 			packageProductDependencies = (
 			);
 			productName = filamentory;
-			productReference = A615C4D130013E900021C49F /* filamentory.app */;
+			productReference = A6C30096301E349200241E07 /* filamentory.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A6C300E4301E358600241E07 /* filamentoryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6C300EB301E358600241E07 /* Build configuration list for PBXNativeTarget "filamentoryTests" */;
+			buildPhases = (
+				A6C300E1301E358600241E07 /* Sources */,
+				A6C300E2301E358600241E07 /* Frameworks */,
+				A6C300E3301E358600241E07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6C300EA301E358600241E07 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A6C300E6301E358600241E07 /* filamentoryTests */,
+			);
+			name = filamentoryTests;
+			packageProductDependencies = (
+			);
+			productName = filamentoryTests;
+			productReference = A6C300E5301E358600241E07 /* filamentoryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -83,29 +138,42 @@
 					A615C4D030013E900021C49F = {
 						CreatedOnToolsVersion = 26.3;
 					};
+					A6C300E4301E358600241E07 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = A615C4D030013E900021C49F;
+					};
 				};
 			};
 			buildConfigurationList = A615C4CC30013E900021C49F /* Build configuration list for PBXProject "filamentory" */;
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = A615C4C830013E900021C49F;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = A615C4D230013E900021C49F /* Products */;
+			productRefGroup = A615C4C830013E900021C49F;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				A615C4D030013E900021C49F /* filamentory */,
+				A6C300E4301E358600241E07 /* filamentoryTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		A615C4CF30013E900021C49F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6C300E3301E358600241E07 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +190,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A6C300E1301E358600241E07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A6C300EA301E358600241E07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A615C4D030013E900021C49F /* filamentory */;
+			targetProxy = A6C300E9301E358600241E07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A615C4DC30013E930021C49F /* Debug */ = {
@@ -178,13 +261,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -236,12 +320,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -251,16 +336,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TR9PZL6QZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = filamentory/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Filamentory;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -283,16 +372,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TR9PZL6QZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = filamentory/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Filamentory;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +400,50 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A6C300EC301E358600241E07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TR9PZL6QZ8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soratadev.filamentoryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/filamentory.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/filamentory";
+			};
+			name = Debug;
+		};
+		A6C300ED301E358600241E07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TR9PZL6QZ8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soratadev.filamentoryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/filamentory.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/filamentory";
 			};
 			name = Release;
 		};
@@ -327,6 +464,15 @@
 			buildConfigurations = (
 				A615C4DF30013E930021C49F /* Debug */,
 				A615C4E030013E930021C49F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6C300EB301E358600241E07 /* Build configuration list for PBXNativeTarget "filamentoryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6C300EC301E358600241E07 /* Debug */,
+				A6C300ED301E358600241E07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

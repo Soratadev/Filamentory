@@ -36,7 +36,7 @@ struct DetailsFilamentView: View {
             }
             
             Section("Storage") {
-                LabeledContent("Stock", value: "\(filament.amount)")
+                LabeledContent("Spools in reserve", value: "\(filament.spoolsInReserve)")
                 
                 LabeledContent("Remaining weight", value: "\(filament.remaining) g")
                 LabeledContent("Status", value: "\(filament.status.localizedName(locale: locale))")
@@ -70,7 +70,7 @@ struct DetailsFilamentView: View {
             nameColor: "Blanco",
             weight: 1000,
             remaining: 850,
-            amount: 3,
+            spoolsInReserve: 3,
             price: 24.99
         )
     )

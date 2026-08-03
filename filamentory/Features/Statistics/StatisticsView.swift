@@ -12,6 +12,8 @@ struct StatisticsView: View {
     @Query private var filaments: [Filament]
     @Query private var usageEvents: [UsageEvent]
     
+    @State private var showCostCalculator = false
+    
     @AppStorage("lowStockThreshold") private var lowStockThreshold: Double = 0.1
     @AppStorage("preferredCurrencyCode") private var preferredCurrencyCode: String =
     Locale.current.currency?.identifier ?? "EUR"
@@ -19,6 +21,14 @@ struct StatisticsView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section {
+                    Button {
+                        showCostCalculator = true
+                    } label: {
+                        Label("Cost Calculator", systemImage: "function")
+                    }
+                }
+                
                 Section("Inventory Value") {
                     LabeledContent("Total Value") {
                         Text(totalInventoryValue, format: .currency(code: preferredCurrencyCode))
@@ -78,12 +88,17 @@ struct StatisticsView: View {
                 }
             }
             .navigationTitle("Statistics")
+            .sheet(isPresented: $showCostCalculator) {
+                PrintCostCalculatorView()
+            }
         }
     }
     
     private var totalInventoryValue: Double {
         filaments.reduce(0) { total, filament in
-            total + (filament.price * Double(filament.amount))
+            let openSpoolValue = filament.price * (Double(filament.remaining) / Double(filament.weight))
+            let reserveValue = filament.price * Double(filament.spoolsInReserve)
+            return total + openSpoolValue + reserveValue
         }
     }
     
@@ -102,7 +117,7 @@ struct StatisticsView: View {
         return grouped.map { type, filamentsOfType in
             MaterialBreakdown(
                 type: type,
-                totalWeight: filamentsOfType.reduce(0) { $0 + $1.remaining }
+                totalWeight: filamentsOfType.reduce(0) { $0 + $1.remaining + ($1.spoolsInReserve * $1.weight) }
             )
         }
         .sorted { $0.totalWeight > $1.totalWeight }

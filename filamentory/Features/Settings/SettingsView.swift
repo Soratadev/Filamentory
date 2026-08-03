@@ -13,7 +13,7 @@ struct SettingsView: View {
     @Query private var filaments: [Filament]
     
     @AppStorage("appTheme") private var appTheme: AppTheme = .system
-    @AppStorage("appLanguage") private var appLanguage: AppLanguage = .english
+    @AppStorage("appLanguage") private var appLanguage: AppLanguage = .systemDefault
     @AppStorage("lowStockThreshold") private var lowStockThreshold: Double = 0.1
     @AppStorage("preferredCurrencyCode") private var preferredCurrencyCode: String =
     Locale.current.currency?.identifier ?? "EUR"

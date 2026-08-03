@@ -19,10 +19,13 @@ struct ShoppingListView: View {
             Group {
                 if items.isEmpty {
                     emptyStateView
+                        .transition(.opacity)
                 } else {
                     itemListView
+                        .transition(.opacity)
                 }
             }
+            .animation(.default, value: items.count)
             .navigationTitle("Shopping List")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -31,6 +34,7 @@ struct ShoppingListView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .accessibilityLabel("Add item")
                 }
             }
             .alert("New Item", isPresented: $showAddAlert) {
@@ -89,6 +93,7 @@ struct ShoppingListView: View {
                             .foregroundStyle(item.isChecked ? .green: .primary)
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel(item.isChecked ? "Mark as not bought" : "Mark as bought")
                     
                     Text(item.name)
                         .strikethrough(item.isChecked)

@@ -18,7 +18,7 @@ struct NewFilamentView: View {
         nameColor: "",
         weight: 1000,
         remaining: 1000,
-        amount: 1,
+        spoolsInReserve: 0,
         price: 19.99
     )
     

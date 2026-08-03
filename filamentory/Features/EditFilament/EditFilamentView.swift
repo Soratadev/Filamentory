@@ -13,6 +13,7 @@ struct EditFilamentView: View {
     @Bindable var filament: Filament
     @State private var initialRemaining: Int = 0
     @State private var showEmptyAlert: Bool = false
+    @State private var showNewSpoolAlert: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -26,7 +27,11 @@ struct EditFilamentView: View {
                     Button("Done") {
                         logUsageIfNeeded()
                         if initialRemaining > 0 && filament.remaining == 0 {
-                            showEmptyAlert = true
+                            if filament.spoolsInReserve > 0 {
+                                openNextSpool()
+                            } else {
+                                showEmptyAlert = true
+                            }
                         } else {
                             dismiss()
                         }
@@ -36,6 +41,11 @@ struct EditFilamentView: View {
         }
         .onAppear {
             initialRemaining = filament.remaining
+        }
+        .alert("New Spool Opened", isPresented: $showNewSpoolAlert) {
+            Button("OK") { dismiss() }
+        } message: {
+            Text("This spool ran out. We opened a new one from your reserve. \(filament.spoolsInReserve) left in reserve")
         }
         .alert("Filament Empty", isPresented: $showEmptyAlert) {
             Button("Add to Shopping List") {
@@ -75,6 +85,17 @@ struct EditFilamentView: View {
             print("❌ Error saving shopping list item: \(error)")
         }
     }
+    
+    private func openNextSpool() {
+        filament.spoolsInReserve -= 1
+        filament.remaining = filament.weight
+        do {
+            try modelContext.save()
+        } catch {
+            print("❌ Error opening next spool: \(error)")
+        }
+        showNewSpoolAlert = true
+    }
 }
 
 #Preview {
@@ -89,7 +110,7 @@ struct EditFilamentView: View {
         nameColor: "White",
         weight: 1000,
         remaining: 850,
-        amount: 3,
+        spoolsInReserve: 3,
         price: 24.99
     )
     container.mainContext.insert(filament)

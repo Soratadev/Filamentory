@@ -52,6 +52,7 @@ struct FilamentRow: View {
                 Image(systemName: "star.fill")
                     .foregroundStyle(.yellow)
                     .padding(6)
+                    .accessibilityLabel("Favorite")
             }
         }
         .animation(.spring(), value: filament.isFavorite)
@@ -68,7 +69,7 @@ struct FilamentRow: View {
             nameColor: "Blanco",
             weight: 1000,
             remaining: 0,
-            amount: 3,
+            spoolsInReserve: 3,
             price: 24.99,
             isFavorite: true
         )

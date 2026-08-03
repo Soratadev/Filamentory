@@ -11,8 +11,7 @@ import SwiftData
 @main
 struct filamentoryApp: App {
     @AppStorage("appTheme") private var appTheme: AppTheme = .system
-    @AppStorage("appLanguage") private var appLanguage: AppLanguage =
-        Locale.current.language.languageCode?.identifier == "es" ? .spanish : .english
+    @AppStorage("appLanguage") private var appLanguage: AppLanguage = .systemDefault
     
     var body: some Scene {
         WindowGroup {

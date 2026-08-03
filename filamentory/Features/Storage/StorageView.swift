@@ -20,18 +20,18 @@ struct StorageView: View {
     var body: some View {
         NavigationStack{
             Group {
-                // Verificamos si hay filamentos en la base de datos
                 if filaments.isEmpty {
-                    // Si está vacío, mostramos un estado vacío amigable
                     emptyStateView
+                        .transition(.opacity)
                 } else if filteredFilaments.isEmpty {
-                    // si hay filamentos pero ninguno coincide con la búsqueda
                     noResultsView
+                        .transition(.opacity)
                 } else {
-                    // Si hay filamentos, mostramos la lista
                     filamentListView
+                        .transition(.opacity)
                 }
             }
+            .animation(.default, value: filteredFilaments.count)
             .navigationTitle("Storage")
             .searchable(text: $filter.searchText, prompt: "Search filaments")
             .toolbar {
@@ -46,6 +46,7 @@ struct StorageView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .accessibilityLabel("Add filament")
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button {

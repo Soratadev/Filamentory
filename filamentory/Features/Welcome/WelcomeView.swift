@@ -24,7 +24,7 @@ struct WelcomeView: View {
         WelcomePage(
             symbolName: "chart.bar.fill",
             title: "Understand your usage",
-            description: "See monthly consumption, your most-used color, and the value of your inventory at a glance."
+            description: "See monthly consumption, your most-used color, and the value of your inventory at a glance. Check out the cost calculator for your projects."
         )
     ]
 

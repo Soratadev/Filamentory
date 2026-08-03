@@ -36,10 +36,13 @@ final class Filament {
     var nameColor: String
     var weight: Int
     var remaining: Int
-    var amount: Int
+    var spoolsInReserve: Int
     var price: Double
     var isFavorite: Bool
     var createdAt: Date
+    
+    @Relationship(deleteRule: .nullify, inverse: \UsageEvent.filament)
+    var usageEvents: [UsageEvent] = []
     
     // Propiedad computada para trabajar con Color de SwiftUI
     var color: Color {
@@ -64,7 +67,7 @@ final class Filament {
         nameColor: String,
         weight: Int,
         remaining: Int,
-        amount: Int,
+        spoolsInReserve: Int,
         price: Double,
         isFavorite: Bool = false,
         createdAt: Date = .now
@@ -76,7 +79,7 @@ final class Filament {
         self.nameColor = nameColor
         self.weight = weight
         self.remaining = remaining
-        self.amount = amount
+        self.spoolsInReserve = spoolsInReserve
         self.price = price
         self.isFavorite = isFavorite
         self.createdAt = createdAt

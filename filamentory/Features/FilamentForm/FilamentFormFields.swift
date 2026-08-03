@@ -5,15 +5,23 @@
 //  Created by Alejandro Ortega García on 15/07/2026.
 //
 import SwiftUI
+import SwiftData
 
 struct FilamentFormFields: View {
     @Bindable var filament: Filament
+    @Query private var allFilaments: [Filament]
     @AppStorage("preferredCurrencyCode") private var preferredCurrencyCode: String =
-        Locale.current.currency?.identifier ?? "EUR"
-
+    Locale.current.currency?.identifier ?? "EUR"
+    
+    private enum Field: Hashable {
+        case brand
+        case nameColor
+    }
+    @FocusState private var focusedField: Field?
+    
     private let materials = ["PLA", "PETG", "ABS", "ASA", "TPU", "PVA", "PA", "PP", "PC", "Nylon", "Other"]
-    private let weights = [500, 750, 1000, 2000, 3000]
-
+    private let weights = [500, 750, 1000, 2000]
+    
     var body: some View {
         Section ("Basic Information") {
             HStack {
@@ -21,6 +29,10 @@ struct FilamentFormFields: View {
                 Spacer()
                 TextField("", text: $filament.brand)
                     .multilineTextAlignment(.trailing)
+                    .focused($focusedField, equals: .brand)
+            }
+            if focusedField == .brand, !brandSuggestions.isEmpty {
+                suggestionRow(brandSuggestions) { filament.brand = $0 }
             }
             
             Picker("Type", selection: $filament.type) {
@@ -34,7 +46,12 @@ struct FilamentFormFields: View {
                 Spacer()
                 TextField("", text: $filament.nameColor)
                     .multilineTextAlignment(.trailing)
+                    .focused($focusedField, equals: .nameColor)
             }
+            if focusedField == .nameColor, !colorSuggestions.isEmpty {
+                suggestionRow(colorSuggestions) { filament.nameColor = $0 }
+            }
+            
             ColorPicker("Color", selection: $filament.color)
             HStack {
                 Text("Price")
@@ -58,7 +75,7 @@ struct FilamentFormFields: View {
         Section ("Storage") {
             Stepper("Remaining weight: \(filament.remaining) g", value: $filament.remaining, in: 0...filament.weight, step: 10)
             
-            Stepper("Amount: \(filament.amount)", value: $filament.amount, in: 1...100, step: 1)
+            Stepper("Spools in reserve: \(filament.spoolsInReserve)", value: $filament.spoolsInReserve, in: 0...100, step: 1)
             
             Picker("Status", selection: $filament.status) {
                 Text("Open").tag(StatusFilament.open)
@@ -66,6 +83,40 @@ struct FilamentFormFields: View {
             }.pickerStyle(.segmented)
             
         }
+    }
+    
+    private func suggestionRow(_ suggestions: [String], onSelect: @escaping (String) -> Void) -> some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(suggestions, id: \.self) { suggestion in
+                    Button(suggestion) {
+                        onSelect(suggestion)
+                        focusedField = nil
+                    }
+                        .buttonStyle(.borderedProminent)
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 10)
+                }
+            }
+        }
+    }
+    
+    private var brandSuggestions: [String] {
+        guard !filament.brand.isEmpty else { return [] }
+        return Set(allFilaments.map(\.brand))
+            .filter { $0.localizedCaseInsensitiveContains(filament.brand) && $0 != filament.brand }
+            .sorted()
+            .prefix(3)
+            .map { $0 }
+    }
+    
+    private var colorSuggestions: [String] {
+        guard !filament.nameColor.isEmpty else { return [] }
+        return Set(allFilaments.map(\.nameColor))
+            .filter { $0.localizedCaseInsensitiveContains(filament.nameColor) && $0 != filament.nameColor }
+            .sorted()
+            .prefix(3)
+            .map { $0 }
     }
 }
 
@@ -80,9 +131,10 @@ struct FilamentFormFields: View {
                 nameColor: "White",
                 weight: 1000,
                 remaining: 850,
-                amount: 3,
+                spoolsInReserve: 3,
                 price: 24.99
             )
         )
     }
+    .modelContainer(for: Filament.self, inMemory: true)
 }

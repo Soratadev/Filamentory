@@ -81,8 +81,8 @@ struct FilamentFilterView: View {
     FilamentFilterView(
         filter: $filter,
         allFilaments: [
-            Filament(status: .open, brand: "Bambu Lab", type: "PLA", color: .white, nameColor: "White", weight: 1000, remaining: 850, amount: 3, price: 24.99),
-            Filament(status: .close, brand: "Prusament", type: "PETG", color: .black, nameColor: "Black", weight: 1000, remaining: 1000, amount: 1, price: 29.99)
+            Filament(status: .open, brand: "Bambu Lab", type: "PLA", color: .white, nameColor: "White", weight: 1000, remaining: 850, spoolsInReserve: 3, price: 24.99),
+            Filament(status: .close, brand: "Prusament", type: "PETG", color: .black, nameColor: "Black", weight: 1000, remaining: 1000, spoolsInReserve: 1, price: 29.99)
         ]
     )
 }
